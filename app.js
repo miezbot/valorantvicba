@@ -333,4 +333,4 @@ music.on('voiceStateUpdate', (oldState, newState) => {
         if (!newState.member.roles.cache.has(role)) newState.member.addRole(role); // Add the role to the user if they don't already have it
     }
 });
- music.login("NzAwNzQxOTU5NTg0NTc5NjM1.XtokuA.Cu2rjdyyDp0qmwtYS8El8MEoPKg");
+ music.login(process.env.BOT_TOKEN);
