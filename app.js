@@ -323,6 +323,19 @@ music.on('voiceStateUpdate',(peka, dikit) => {
       .catch(console.error);
   }
     }
+  const channel = music.channels.get('721863688251899984')
+  const role1 = dikit.guild.roles.find('name','On Battle!')
+   let newUserChannel = dikit.voiceChannel;
+  let oldUserChannel = peka.voiceChannel;
+  if(oldUserChannel === undefined && newUserChannel !== `Team | ${dikit.user.username}`) {
+    channel.sendMessage(dikit.displayName + ' has joined a voice channel');
+               dikit.addRole(role1.id)
+
+  } else if(newUserChannel === undefined){
+    channel.sendMessage(peka.displayName + ' has left a voice channel');
+        peka.removeRole(role1.id)
+
+  }
   })
 ////////////////////////////////////////////////////////////////
 music.on('voiceStateUpdate', (oldState, newState) => {
