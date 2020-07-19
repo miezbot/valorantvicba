@@ -5,10 +5,10 @@ module.exports.run = async (client, message, args) => {
       if (!message.member.hasPermission("MANAGE_NICKNAMES")) return message.reply("❌**Error:** Maaf, anda siapa ya!!!??");
   var channelerror= new Discord.RichEmbed()
   .setAuthor(message.author.tag,message.author.avatarURL)
-  .setDescription("Tolong ikuti peraturan. Silahkan ke `Text Channel` <#700798187916623922> untuk mengganti nickname member.")
+  .setDescription("Tolong ikuti peraturan. Silahkan ke `Text Channel` <#718912448400457729> untuk mengganti nickname member.")
   .setColor("FF4654")
   message.delete()
-  if(message.channel.id !== '700798187916623922')
+  if(message.channel.id !== '718912448400457729')
   return message.channel.send(channelerror)
   message.delete();
   let user = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
