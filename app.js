@@ -213,17 +213,18 @@ music.on('voiceStateUpdate',(peka, dikit) => {
   
   if(dikit.voiceChannelID === channelid){
     dikit.guild.createChannel(`Team ${rest_of_the_string[0]}`,'voice')
-    .then(async tempChannel => {
-     await tempChannel.setParent(kategorikanal);
-  await tempChannel.setUserLimit("6");
-   await tempChannel.lockPermissions()
-	.then(() => console.log('Successfully synchronized permissions with parent channel'))
-	.catch(console.error);
-       tempChannel.overwritePermissions(peka.id, {
+    .then(async m => {
+     await m.setParent(kategorikanal);
+	    await m.lockPermissions() 
+		    .then( abang => {
+       abang.overwritePermissions(peka.id, {
         CONNECT: true,
         MANAGE_CHANNELS: true,
-         MOVE_MEMBERS : true                                    
+         MOVE_MEMBERS : true
+    })                                       
       })
+     await m.setUserLimit("6")
+    
      
       peka.setVoiceChannel(tempChannel.id);
       })
