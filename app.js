@@ -216,12 +216,13 @@ music.on('voiceStateUpdate',(peka, dikit) => {
     .then(async tempChannel => {
      await tempChannel.setParent(kategorikanal);
   await tempChannel.setUserLimit("6");
-   await tempChannel.lockPermissions().then( abang => {
-       abang.overwritePermissions(peka.id, {
+   await tempChannel.lockPermissions()
+	.then(() => console.log('Successfully synchronized permissions with parent channel'))
+	.catch(console.error);
+       tempChannel.overwritePermissions(peka.id, {
         CONNECT: true,
         MANAGE_CHANNELS: true,
-         MOVE_MEMBERS : true
-    })                                       
+         MOVE_MEMBERS : true                                    
       })
      
       peka.setVoiceChannel(tempChannel.id);
