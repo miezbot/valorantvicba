@@ -81,47 +81,6 @@ music.on('message', message=> {
 }
 });
 
-music.on('voiceStateUpdate',(oldMember, newMember) => {
-  var state = null;  
-  const kategorikanal = '700794615250288670'
-  const channelid = '700795746382774323'
-  if(!oldMember.voiceChannel && !newMember.voiceChannel) return;
-  if(!oldMember.voiceChannel && newMember.voiceChannel) {state = "join"}
-  else if(oldMember.voiceChannel && !newMember.voiceChannel) {state = "leave"}
-  else if(oldMember.voiceChannel.id !== newMember.voiceChannel.id) {state = "move"}
-  else if(oldMember.voiceChannel.id == newMember.voiceChannel.id) return;
-  console.log(state);
-  
-  if(newMember.voiceChannelID === channelid){
-    newMember.guild.createChannel(`Team | ${newMember.user.username}`,'voice')
-    .then(tempChannel => {
-      tempChannel.setParent(kategorikanal);
-      newMember.setVoiceChannel(tempChannel.id);
-      tempChannel.setUserLimit('5');
-       
-      
-      })
-  .catch(console.error)
-}
-  if(oldMember.voiceChannelID) {
-         
-     const voicelama = oldMember.guild.channels.get(oldMember.voiceChannelID);
-    
-  if(voicelama.name.startsWith(`Team | ${newMember.user.username}`)){
-      let sawadikap = `**${newMember.user.username}'s**` + " **Team**"
-      var koko = new Discord.RichEmbed()
-      .setColor("#FF4654")
-      .setThumbnail(`${newMember.user.avatarURL}`)
-      .addField('**Good Game Well Played**',`${sawadikap}`)
-      .setFooter("@Valorant Indonesia Community." , 'https://i.imgur.com/yPWqxxu.png') 
-      voicelama.delete()
-      .then(function() {
-        music.channels.get('700796140244828270').send(koko)
-  })
-      .catch(console.error);
-  }
-    }
-  })
 ////////
 music.on("message", message => {
   if (message.content.startsWith('!announce')) {
@@ -237,56 +196,14 @@ music.on("guildCreate", guild => {
     let channel = music.channels.get(guild.systemChannelID || channelID);
     channel.send(`Hai.. Terima kasih sudah invite aku!.`);
 });
-
-music.on('voiceStateUpdate',(lama, baru) => {
-  var state = null;  
-  const kategorikanal = '684210439399145502'
-  const channelid = '717475625874751498'
-  if(!lama.voiceChannel && !baru.voiceChannel) return;
-  if(!lama.voiceChannel && baru.voiceChannel) {state = "join"}
-  else if(lama.voiceChannel && !baru.voiceChannel) {state = "leave"}
-  else if(lama.voiceChannel.id !== baru.voiceChannel.id) {state = "move"}
-  else if(lama.voiceChannel.id == baru.voiceChannel.id) return;
-  console.log(state);
-  
-  if(baru.voiceChannelID === channelid){
-    baru.guild.createChannel(`Ranked | ${baru.user.username}`,'voice')
-    .then(tempChannel => {
-      tempChannel.setParent(kategorikanal);
-      baru.setVoiceChannel(tempChannel.id);
-      tempChannel.setUserLimit('5');
-       
-      
-      })
-  .catch(console.error)
-}
-  if(lama.voiceChannelID) {
-         
-     const voicelama = lama.guild.channels.get(lama.voiceChannelID);
-    
-  if(voicelama.name.startsWith(`Ranked | ${baru.user.username}`)){
-      let sawadikap = `**${baru.user.username}'s**` + " **Team**"
-      var koko = new Discord.RichEmbed()
-      .setColor("#FF4654")
-      .setThumbnail(`${baru.user.avatarURL}`)
-      .addField('**Good Game Well Played**',`${sawadikap}`)
-      .setFooter("@Valorant Indonesia Community." , 'https://i.imgur.com/yPWqxxu.png') 
-      voicelama.delete()
-      .then(function() {
-        music.channels.get('717475755512299560').send(koko)
-  })
-      .catch(console.error);
-  }
-    }
-  })
 ///////////////////////////////////////////////////////////////// TEST //////////////////////////////////////
 music.on('voiceStateUpdate',(peka, dikit) => {
   let id = peka.displayName.toString().substr()
   let rest_of_the_string = id.split(' |'); //[title, description, link, image]
   let chan = `Team ${id}`
   var state = null;  
-  const kategorikanal = '703616272272982082'
-  const channelid = '703616272272982084'
+  const kategorikanal = '725730660894900315'
+  const channelid = '740199642754580603'
   if(!peka.voiceChannel && !dikit.voiceChannel) return;
   if(!peka.voiceChannel && dikit.voiceChannel) {state = "join"}
   else if(peka.voiceChannel && !dikit.voiceChannel) {state = "leave"}
@@ -325,14 +242,5 @@ music.on('voiceStateUpdate',(peka, dikit) => {
             .forEach((ch) => ch.delete());
     }
   })
-
 ////////////////////////////////////////////////////////////////
-music.on('voiceStateUpdate', (oldState, newState) => {
-    if (!newState.channel || !newState.member) return; // Triggered if the user left a channel
-    const testChannel = newState.guild.channels.cache.find(c => c.name === 'test');
-    if (newState.channelID === testChannel.id) { // Triggered when the user joined the channel we tested for
-        const role = newState.guild.roles.cache.find(r => r.name === 'roletest');
-        if (!newState.member.roles.cache.has(role)) newState.member.addRole(role); // Add the role to the user if they don't already have it
-    }
-});
  music.login(process.env.BOT_TOKEN);
