@@ -38,5 +38,5 @@
     "chalk": "^4.1.0",
     "common-tags": "^1.8.0",
     "moment-duration-format": "^2.2.2"
-  }
+  } 
 }
