@@ -285,8 +285,8 @@ music.on('voiceStateUpdate',(peka, dikit) => {
   let rest_of_the_string = id.split(' |'); //[title, description, link, image]
   let chan = `Team ${id}`
   var state = null;  
-  const kategorikanal = '725730660894900315'
-  const channelid = '740199642754580603'
+  const kategorikanal = '703616272272982082'
+  const channelid = '703616272272982084'
   if(!peka.voiceChannel && !dikit.voiceChannel) return;
   if(!peka.voiceChannel && dikit.voiceChannel) {state = "join"}
   else if(peka.voiceChannel && !dikit.voiceChannel) {state = "leave"}
